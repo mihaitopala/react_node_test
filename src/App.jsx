@@ -41,13 +41,9 @@ import UserLogPage from "./pages/AdminPages/UserLogPage";
 import UserDashboard from "./pages/UserPages/Dashboard";
 import UserPage from "./pages/UserPages/UserPage";
 import NotificationsPage from "./pages/UserPages/NotificationsPage";
+import TaskFilterPage from "./pages/UserPages/TaskFilterPage";
 import CalendarPage from "./pages/UserPages/CalendarPage";
 import ProfilePage from "./pages/UserPages/ProfilePage";
-
-
-// Feature Components
-import TaskFilter from "./components/tasks/TaskFilter";
-
 
 // Context Providers
 import AuthProvider from "./contexts/AuthContext";
@@ -209,7 +205,7 @@ function App() {
                  path="/admin/task-filter"
                  element={
                    <ProtectedRoute requiredRole="admin">
-                     <TaskFilter />
+                     <TaskFilterPage />
                    </ProtectedRoute>
                  }
                />
@@ -259,7 +255,7 @@ function App() {
                  path="/user/task-filter"
                  element={
                    <ProtectedRoute>
-                     <TaskFilter />
+                     <TaskFilterPage />
                    </ProtectedRoute>
                  }
                />
