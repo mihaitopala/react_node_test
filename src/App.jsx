@@ -85,51 +85,6 @@ const ProtectedRoute = ({ children, requiredRole }) => {
  return children;
 };
 
-
-/**
-* Landing Route Component
-*
-* Shows different content based on authentication status:
-* - If authenticated: Shows the full landing page
-* - If not authenticated: Shows only the dashboard panel and redirects to login
-*/
-const LandingRoute = () => {
- const { user } = useAuth();
- const isAuthenticated = !!user || !!localStorage.getItem("token");
-  if (!isAuthenticated) {
-   // Show only dashboard panel for unauthenticated users
-   return (
-     <div className="min-h-screen bg-gradient-to-b from-gray-200 to-white text-gray-900">
-       <div className="relative flex flex-col items-center justify-center text-center py-20 px-6">
-         <h1 className="text-6xl font-extrabold leading-tight bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
-           Welcome to <span className="block">TaskFlow</span>
-         </h1>
-         <p className="mt-4 text-lg text-gray-600 max-w-2xl">
-           Please login to access the full application.
-         </p>
-         <div className="mt-8 space-x-4">
-           <button
-             onClick={() => window.location.href = "/login"}
-             className="px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-md shadow-md hover:opacity-90 transition"
-           >
-             Login
-           </button>
-           <button
-             onClick={() => window.location.href = "/signup"}
-             className="px-8 py-3 border border-gray-400 text-gray-800 font-semibold rounded-md shadow-md hover:bg-gray-200 transition"
-           >
-             Sign Up
-           </button>
-         </div>
-       </div>
-     </div>
-   );
- }
-  // Show full landing page for authenticated users
- return <Landing />;
-};
-
-
 /**
 * Main App Component
 *
@@ -146,7 +101,7 @@ function App() {
            <main className="flex-grow">
              <Routes>
                {/* Public Routes - Login/Register first */}
-               <Route path="/" element={<LandingRoute />} />
+               <Route path="/" element={<Landing />} />
                <Route path="/login" element={<Login />} />
                <Route path="/signup" element={<Signup />} />
                <Route path="/forgot-password" element={<ForgotPassword />} />
